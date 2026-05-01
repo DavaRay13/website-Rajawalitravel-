@@ -21,7 +21,7 @@ export default function HeroSection() {
   const statsColor = isNight ? "text-blue-200" : "text-blue-600";
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-blue-900 via-blue-800 to-blue-900">
+    <section className={`relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b ${bgGradient} transition-all duration-1000`}>
       <div className="absolute inset-0 overflow-hidden">
         {isNight && Array.from({ length: 20 }).map((_, i) => (
           <motion.div
@@ -53,7 +53,7 @@ export default function HeroSection() {
         <svg className="absolute bottom-32 left-0 w-full h-48" viewBox="0 0 1200 200" preserveAspectRatio="none">
           <path
             d="M0,200 L0,150 L50,150 L50,120 L80,120 L80,150 L100,150 L100,100 L120,100 L120,150 L180,150 L180,80 L220,80 L220,150 L280,150 L280,130 L320,130 L320,150 L400,150 L400,90 L440,90 L440,150 L500,150 L500,110 L540,110 L540,150 L600,150 L600,70 L650,70 L650,150 L700,150 L700,140 L750,140 L750,150 L850,150 L850,85 L900,85 L900,150 L950,150 L950,120 L1000,120 L1000,150 L1100,150 L1100,95 L1150,95 L1150,150 L1200,150 L1200,200 Z"
-            fill={isNight ? "#0f172a" : "#64748b"}
+            fill={isNight ? "#0f172a" : "#94a3b8"}
           />
           {Array.from({ length: 15 }).map((_, i) => (
             <rect
@@ -62,12 +62,13 @@ export default function HeroSection() {
               y={100 + (i % 3) * 20}
               width="8"
               height="10"
-              fill={i % 2 === 0 ? "#fbbf24" : "#fef3c7"}
+              fill={isNight ? (i % 2 === 0 ? "#fbbf24" : "#fef3c7") : "#64748b"}
+              style={{ opacity: isNight ? 1 : 0.3 }}
             />
           ))}
         </svg>
         
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gray-900 overflow-hidden">
+        <div className={`absolute bottom-0 left-0 w-full h-32 overflow-hidden ${isNight ? "bg-gray-900" : "bg-gray-700"}`}>
           <div className="absolute bottom-16 left-0 w-[200%] h-2">
             <div className="animate-road absolute inset-0 flex gap-8">
               {Array.from({ length: 20 }).map((_, i) => (
@@ -103,8 +104,8 @@ export default function HeroSection() {
           <line x1="260" y1="130" x2="260" y2="35" stroke="#1e40af" strokeWidth="1" />
           <line x1="320" y1="130" x2="320" y2="35" stroke="#1e40af" strokeWidth="1" />
           <line x1="380" y1="130" x2="380" y2="35" stroke="#1e40af" strokeWidth="1" />
-          <ellipse cx="455" cy="110" rx="8" ry="6" fill={isNight ? "#fef3c7" : "#94a3b8"} />
-          <ellipse cx="455" cy="110" rx="12" ry="10" fill={isNight ? "rgba(251,191,36,0.3)" : "rgba(59,130,246,0.2)"} />
+          <ellipse cx="455" cy="110" rx="8" ry="6" fill={isNight ? "#fef3c7" : "#374151"} />
+          <ellipse cx="455" cy="110" rx="12" ry="10" fill={isNight ? "rgba(251,191,36,0.3)" : "rgba(55,65,81,0.2)"} />
           <rect x="450" y="120" width="15" height="15" rx="2" fill="#4b5563" />
           <line x1="450" y1="122" x2="465" y2="122" stroke="#6b7280" strokeWidth="1" />
           <line x1="450" y1="125" x2="465" y2="125" stroke="#6b7280" strokeWidth="1" />
