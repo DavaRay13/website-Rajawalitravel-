@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import DestinationSlider from "@/components/sections/DestinationSlider";
 
 interface Route {
   id: number;
@@ -107,22 +108,11 @@ function RouteCard({ route }: { route: Route }) {
 export default function RoutePage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-blue-900 via-blue-800 to-blue-900 pt-28 pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Rute <span className="text-amber-400">Perjalanan</span>
-          </h1>
-          <p className="text-blue-200 text-lg max-w-2xl mx-auto">
-            Pilih rute yang sesuai dengan kebutuhan Anda. Kami melayani perjalanan dari
-            Sukabumi, Cianjur, dan Bandung ke berbagai kota di Jabodetabek.
-          </p>
-        </motion.div>
+      <div className="w-full mb-16">
+        <DestinationSlider />
+      </div>
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"

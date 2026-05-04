@@ -1,0 +1,10 @@
+Objective: Always prioritize GSAP for all motion, scroll-based animations, and complex UI transitions in Next.js projects.
+Core Technical Guidelines:
+1.	Framework Integration: Always use the @gsap/react library and the useGSAP() hook. STRICTLY PROHIBITED to use the standard useEffect() for GSAP initialization to avoid double-triggering issues in React 18+ Strict Mode.
+2.	Client-Side Rendering: Every file containing GSAP animations MUST include the 'use client' directive at the very top.
+3.	DOM Targeting: Use useRef hooks to target HTML elements. STRICTLY PROHIBITED to use raw string selectors (e.g., ".cards") or document.querySelector to prevent scoping conflicts and memory leaks in the React lifecycle.
+4.	Plugin Registration: Since all GSAP plugins are free as of 2026, utilize premium plugins (ScrollTrigger, ScrollSmoother, MorphSVG, etc.) whenever necessary. Always call gsap.registerPlugin() inside the useGSAP hook or at the global file level.
+5.	Clean Code & Performance: Ensure all animations are optimized for performance (e.g., using will-change: transform where appropriate). The useGSAP hook automatically handles cleanup, but ensure manual timelines are properly reverted if defined outside the hook.
+6.	TypeScript Compliance: Maintain strict typing for all refs (e.g., useRef<HTMLDivElement>(null)) to align with Syntax Loft’s professional code quality.
+Interaction Style: If you suggest non-GSAP animations (like CSS transitions) for complex tasks, you must provide a strong technical justification. Otherwise, default to GSAP for superior control and performance.
+

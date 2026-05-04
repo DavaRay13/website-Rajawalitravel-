@@ -1,6 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const features = [
   {
@@ -43,7 +48,7 @@ const features = [
       </svg>
     ),
     title: "Sopir Profesional",
-    description: "Sopir berpengalaman, ramah, dan熟悉 semua rute perjalanan.",
+    description: "Sopir berpengalaman, ramah, dan familiar semua rute perjalanan.",
   },
   {
     icon: (
@@ -61,57 +66,137 @@ const features = [
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
+const stats = [
+  { value: "500+", label: "Pelanggan Puas" },
+  { value: "6", label: "Unit Armada" },
+  { value: "18", label: "Rute Tersedia" },
+  { value: "24/7", label: "Layanan Aktif" },
+];
+
+function FeatureCard({ feature }: { feature: (typeof features)[0] }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const iconRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const card = cardRef.current;
+      const icon = iconRef.current;
+
+      if (!card || !icon) return;
+
+      const handleMouseEnter = () => {
+        gsap.to(card, {
+          y: -5,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+        gsap.to(icon, {
+          scale: 1.1,
+          rotation: 5,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      };
+
+      const handleMouseLeave = () => {
+        gsap.to(card, {
+          y: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+        gsap.to(icon, {
+          scale: 1,
+          rotation: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      };
+
+      card.addEventListener("mouseenter", handleMouseEnter);
+      card.addEventListener("mouseleave", handleMouseLeave);
+
+      return () => {
+        card.removeEventListener("mouseenter", handleMouseEnter);
+        card.removeEventListener("mouseleave", handleMouseLeave);
+      };
     },
-  },
-};
+    { scope: cardRef }
+  );
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 },
-  },
-};
-
-function FeatureCard({
-  feature,
-}: {
-  feature: (typeof features)[0];
-}) {
   return (
-    <motion.div
-      variants={itemVariants}
-      whileHover={{ y: -5, transition: { duration: 0.3 } }}
-      className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center hover:bg-white/10 hover:border-amber-400/30 transition-all duration-300 group"
+    <div
+      ref={cardRef}
+      className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center hover:bg-white/10 hover:border-amber-400/30 transition-all duration-300 group cursor-pointer"
+      style={{ willChange: "transform" }}
     >
-      <motion.div
-        whileHover={{ scale: 1.1, rotate: 5 }}
+      <div
+        ref={iconRef}
         className="w-16 h-16 bg-amber-400/20 rounded-2xl flex items-center justify-center mx-auto mb-6 text-amber-400 group-hover:bg-amber-400 group-hover:text-blue-900 transition-all duration-300"
       >
         {feature.icon}
-      </motion.div>
+      </div>
       <h3 className="text-xl font-bold text-white mb-4">{feature.title}</h3>
       <p className="text-blue-200 leading-relaxed">{feature.description}</p>
-    </motion.div>
+    </div>
   );
 }
 
 export default function FeaturesSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      gsap.set(".feature-card", { opacity: 0, y: 30 });
+      gsap.set(titleRef.current, { opacity: 0, y: -20 });
+      gsap.set(".stat-item", { opacity: 0 });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      tl.to(titleRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+      })
+        .to(
+          ".feature-card",
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: "power2.out",
+          },
+          "-=0.3"
+        )
+        .to(
+          ".stat-item",
+          {
+            opacity: 1,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "power2.out",
+          },
+          "-=0.2"
+        );
+    },
+    { scope: sectionRef }
+  );
+
   return (
-    <section className="relative bg-blue-900 py-20 md:py-32">
+    <section ref={sectionRef} className="relative bg-blue-900 py-20 md:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <div
+          ref={titleRef}
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -121,41 +206,32 @@ export default function FeaturesSection() {
             Kami menghadirkan pengalaman perjalanan yang berbeda dengan layanan
             berkualitas tinggi dan harga yang kompetitif.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+        <div
+          ref={cardsRef}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
-          {features.map((feature) => (
-            <FeatureCard key={feature.title} feature={feature} />
+          {features.map((feature, index) => (
+            <div key={index} className="feature-card">
+              <FeatureCard feature={feature} />
+            </div>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
+        <div
+          ref={statsRef}
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
         >
-          {[
-            { value: "500+", label: "Pelanggan Puas" },
-            { value: "6", label: "Unit Armada" },
-            { value: "18", label: "Rute Tersedia" },
-            { value: "24/7", label: "Layanan Aktif" },
-          ].map((stat, index) => (
-            <div key={index}>
+          {stats.map((stat, index) => (
+            <div key={index} className="stat-item">
               <div className="text-3xl md:text-4xl font-bold text-amber-400 mb-2">
                 {stat.value}
               </div>
               <div className="text-blue-200 text-sm">{stat.label}</div>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

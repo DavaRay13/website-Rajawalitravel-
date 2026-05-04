@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -95,18 +96,14 @@ export default function FooterSection() {
             viewport={{ once: true }}
           >
             <div className="flex items-center gap-2 mb-6">
-              <svg
-                width="32"
-                height="24"
-                viewBox="0 0 48 32"
-                className="fill-white"
-              >
-                <path d="M4 24h4l2-6h12l2 6h4l3-8h2l2-4h-4l-1-2h-2l-1 2H16l-3 8H8l-4 10z" />
-                <circle cx="9" cy="26" r="3" />
-                <circle cx="23" cy="26" r="3" />
-                <circle cx="37" cy="26" r="3" />
-              </svg>
-              <span className="text-xl font-bold text-white">RAJAWALI</span>
+              <Image 
+                src="/images/logo.png" 
+                alt="Rajawali Logo" 
+                width={40}
+                height={40}
+                className="w-10 h-auto"
+              />
+              <span className="text-xl font-bold text-white uppercase tracking-wider">RAJAWALI</span>
             </div>
             <p className="text-blue-200 mb-6">
               Layanan travel door-to-door terpercaya dari Sukabumi, Cianjur, dan
@@ -179,14 +176,23 @@ export default function FooterSection() {
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            <h3 className="text-lg font-bold text-white mb-6">Jam Operasional</h3>
-            <div className="text-blue-200 space-y-2">
+            <h3 className="text-lg font-bold text-white mb-6">Galeri Armada</h3>
+            <div className="grid grid-cols-2 gap-2 mb-6">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="relative aspect-video rounded-lg overflow-hidden group border border-white/10 bg-white/5">
+                  <Image
+                    src={`/images/footer-gallery-${i}.jpg`}
+                    alt={`Gallery ${i}`}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="text-blue-200 text-sm">
+              <p className="font-bold text-white mb-1">Jam Operasional:</p>
               <p>Senin - Minggu: 24 Jam</p>
               <p>Layanan 24/7 termasuk hari libur</p>
-              <p className="mt-4 text-sm">
-                Kami siap melayani Anda kapan saja dengan respons cepat dan layanan
-                terbaik.
-              </p>
             </div>
           </motion.div>
         </div>

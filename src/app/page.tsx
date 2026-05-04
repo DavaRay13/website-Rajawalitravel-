@@ -1,18 +1,26 @@
-import HeroSection from "@/components/sections/HeroSection";
+import StickyHeroSection from "@/components/sections/StickyHeroSection";
+import AboutSection from "@/components/sections/AboutSection";
 import SectionDivider from "@/components/sections/SectionDivider";
+import ServicesSection from "@/components/sections/ServicesSection";
 import FeaturesSection from "@/components/sections/FeaturesSection";
 import HowToOrderSection from "@/components/sections/HowToOrderSection";
-import FAQSection from "@/components/sections/FAQSection";
+import PhotoGallerySection from "@/components/sections/PhotoGallerySection";
 import CTASection from "@/components/sections/CTASection";
 import FooterSection from "@/components/sections/FooterSection";
 
 export default function Home() {
   return (
     <main>
-      <HeroSection />
-      
+      <StickyHeroSection />
+      <AboutSection />
+
       <SectionDivider type="waves-down" />
-      
+
+      <ServicesSection />
+
+
+      <SectionDivider type="curve-up" />
+
       <FeaturesSection />
       
       <SectionDivider type="curve-up" />
@@ -21,7 +29,7 @@ export default function Home() {
       
       <SectionDivider type="waves-down" />
       
-      <FAQSection />
+      <PhotoGallerySection />
       
       <SectionDivider type="curve-up" />
       
