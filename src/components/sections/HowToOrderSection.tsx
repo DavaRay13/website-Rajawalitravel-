@@ -207,7 +207,7 @@ export default function HowToOrderSection() {
           className="text-center mt-4"
         >
           <motion.a
-            href="https://wa.me/"
+            href="https://wa.me/6285720853828"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}

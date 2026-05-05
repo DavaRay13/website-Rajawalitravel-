@@ -53,7 +53,7 @@ export default function CTASection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.a
-              href="https://wa.me/"
+              href="https://wa.me/6285720853828"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
@@ -67,7 +67,7 @@ export default function CTASection() {
             </motion.a>
 
             <motion.a
-              href="tel:+6281234567890"
+              href="tel:+6285720853828"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-full text-lg hover:bg-white hover:text-blue-900 transition-all duration-300"

@@ -73,7 +73,7 @@ const routes: { city: string; routes: Route[] }[] = [
   },
 ];
 
-const WHATSAPP_NUMBER = "6281234567890"; // Ganti dengan nomor asli
+const WHATSAPP_NUMBER = "6285720853828"; // Ganti dengan nomor asli
 
 function RouteCard({ route }: { route: Route }) {
   const message = `Halo Rajawali Travel, saya ingin memesan travel rute ${route.origin} - ${route.destination}.`;

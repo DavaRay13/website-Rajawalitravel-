@@ -128,7 +128,7 @@ export default function FAQSection() {
             Tidak menemukan jawaban yang Anda cari?
           </p>
           <motion.a
-            href="https://wa.me/"
+            href="https://wa.me/6285720853828"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
