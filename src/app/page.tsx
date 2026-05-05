@@ -3,9 +3,11 @@ import AboutSection from "@/components/sections/AboutSection";
 import SectionDivider from "@/components/sections/SectionDivider";
 import ServicesSection from "@/components/sections/ServicesSection";
 import FeaturesSection from "@/components/sections/FeaturesSection";
+import FullImageSection from "@/components/sections/FullImageSection";
 import HowToOrderSection from "@/components/sections/HowToOrderSection";
 import PhotoGallerySection from "@/components/sections/PhotoGallerySection";
 import CTASection from "@/components/sections/CTASection";
+import MapSection from "@/components/sections/MapSection";
 import FooterSection from "@/components/sections/FooterSection";
 
 export default function Home() {
@@ -23,6 +25,8 @@ export default function Home() {
 
       <FeaturesSection />
       
+      <FullImageSection />
+      
       <SectionDivider type="curve-up" />
       
       <HowToOrderSection />
@@ -36,6 +40,8 @@ export default function Home() {
       <CTASection />
       
       <SectionDivider type="triangle" />
+      
+      <MapSection />
       
       <FooterSection />
     </main>
