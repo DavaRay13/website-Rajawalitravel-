@@ -78,7 +78,7 @@ export default function AboutSection() {
             Tentang Kami
           </span>
           <h2 className="text-3xl md:text-5xl font-bold text-blue-900 leading-tight">
-            Layanan Eksklusif <span className="text-amber-500">24/7</span> Menyesuaikan Jadwal Anda
+            Layanan Eksklusif <span className="text-amber-500">24 jam</span> Menyesuaikan Jadwal Anda
           </h2>
           <div className="w-20 h-1.5 bg-amber-400 rounded-full" />
           <p className="text-gray-600 text-lg leading-relaxed">
@@ -103,7 +103,7 @@ export default function AboutSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <span className="font-semibold text-blue-900">Tersedia 24/7</span>
+              <span className="font-semibold text-blue-900">Tersedia 24 jam</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 bg-amber-400 rounded-full flex items-center justify-center">

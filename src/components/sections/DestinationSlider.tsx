@@ -136,7 +136,7 @@ export default function DestinationSlider() {
         {destinations.map((dest, index) => (
           <div
             key={dest.id}
-            ref={(el) => (cardsRef.current[index] = el)}
+            ref={(el) => { cardsRef.current[index] = el; }}
             onMouseEnter={() => setActiveIndex(index)}
             className="relative h-full overflow-hidden cursor-pointer flex-1"
           >

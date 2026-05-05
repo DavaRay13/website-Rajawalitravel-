@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -13,31 +14,23 @@ const navItems = [
 
 function Logo() {
   return (
-    <Link href="/" className="flex items-center gap-2 group">
-      <div className="relative flex items-center">
-        <svg
-          width="48"
-          height="32"
-          viewBox="0 0 48 32"
-          className="fill-white group-hover:fill-amber-400 transition-colors duration-300"
-        >
-          <path d="M4 24h4l2-6h12l2 6h4l3-8h2l2-4h-4l-1-2h-2l-1 2H16l-3 8H8l-4 10z" />
-          <circle cx="9" cy="26" r="3" />
-          <circle cx="23" cy="26" r="3" />
-          <circle cx="37" cy="26" r="3" />
-        </svg>
-        <svg
-          width="28"
-          height="28"
-          viewBox="0 0 24 24"
-          className="absolute -top-2 -right-2 fill-amber-400 group-hover:fill-amber-300 transition-colors duration-300"
-        >
-          <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />
-        </svg>
-      </div>
-      <span className="text-xl font-bold text-white tracking-wider group-hover:text-amber-400 transition-colors duration-300">
-        RAJAWALI
-      </span>
+    <Link href="/" className="flex items-center gap-3 group">
+      <Image
+        src="/images/logo.png"
+        alt="Rajawali Travel Logo"
+        width={180}
+        height={48}
+        className="h-8 md:h-10 w-auto object-contain"
+        priority
+      />
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        className="fill-amber-400 group-hover:fill-amber-300 transition-colors duration-300"
+      >
+        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />
+      </svg>
     </Link>
   );
 }

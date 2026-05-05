@@ -188,7 +188,7 @@ export default function HowToOrderSection() {
           </Swiper>
           
           {/* Custom styles for Swiper pagination to match the dark theme */}
-          <style dangerouslySetContent={{ __html: `
+          <style dangerouslySetInnerHTML={{ __html: `
             .how-to-order-swiper .swiper-pagination-bullet {
               background: rgba(255, 255, 255, 0.3);
               opacity: 1;

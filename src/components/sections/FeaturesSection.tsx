@@ -33,7 +33,7 @@ const features = [
         />
       </svg>
     ),
-    title: "Layanan 24/7",
+    title: "Layanan 24",
     description: "Siap melayani kapan saja, termasuk dini hari, hari libur, dan weekend.",
   },
   {
@@ -70,7 +70,7 @@ const stats = [
   { value: "500+", label: "Pelanggan Puas" },
   { value: "6", label: "Unit Armada" },
   { value: "18", label: "Rute Tersedia" },
-  { value: "24/7", label: "Layanan Aktif" },
+  { value: "24 jam ", label: "Layanan Aktif" },
 ];
 
 function FeatureCard({ feature }: { feature: (typeof features)[0] }) {

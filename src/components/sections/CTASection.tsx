@@ -91,7 +91,7 @@ export default function CTASection() {
             transition={{ delay: 0.5 }}
             className="mt-8 text-blue-300 text-sm"
           >
-            Respons cepat • Harga kompetitif • Layanan 24/7
+            Respons cepat • Harga kompetitif • Layanan 24 jam
           </motion.p>
         </motion.div>
       </div>

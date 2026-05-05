@@ -4,6 +4,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import Image from "next/image";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -12,34 +13,34 @@ if (typeof window !== "undefined") {
 const sections = [
   {
     id: 1,
-    title: "Eksplorasi Keindahan",
-    subtitle: "PERJALANAN PREMIUM",
-    description: "Nikmati pengalaman travel eksklusif dengan layanan door-to-door yang dirancang khusus untuk kenyamanan maksimal Anda.",
-    bgColor: "bg-[#0f172a]", // Deep Blue
-    image: "/images/service-car.jpg"
+    title: "Pesona Sukabumi",
+    subtitle: "DESTINASI UTAMA",
+    description: "Nikmati perjalanan nyaman menuju Sukabumi dengan pemandangan alam yang asri dan udara yang sejuk sepanjang jalan.",
+    bgColor: "bg-[#0f172a]",
+    image: "/images/sukabumi.jpg"
   },
   {
     id: 2,
-    title: "Armada Mewah",
-    subtitle: "KENYAMANAN UTAMA",
-    description: "Unit Hiace Luxury dengan kabin luas dan kursi ergonomis, memastikan setiap kilometer perjalanan terasa menyenangkan.",
-    bgColor: "bg-[#1e293b]", // Slate Blue
-    image: "/images/service-shuttle.jpg"
+    title: "Kota Cianjur",
+    subtitle: "RUTE TERPOPULER",
+    description: "Layanan door-to-door yang handal untuk rute Cianjur, memastikan Anda sampai ke tujuan dengan aman dan tepat waktu.",
+    bgColor: "bg-[#1e293b]",
+    image: "/images/cianjur.jpg"
   },
   {
     id: 3,
-    title: "Rute Terlengkap",
-    subtitle: "KONEKTIVITAS TINGGI",
-    description: "Layanan rutin Sukabumi, Cianjur, Bandung menuju Jabodetabek dan Bandara Soetta dengan jadwal yang fleksibel.",
-    bgColor: "bg-[#334155]", // Slate Gray
-    image: "/images/service-background.jpg"
+    title: "Bandung Juara",
+    subtitle: "KOTA KREATIF",
+    description: "Perjalanan eksekutif ke Bandung untuk urusan bisnis maupun wisata dengan fasilitas armada terbaik di kelasnya.",
+    bgColor: "bg-[#334155]",
+    image: "/images/bnadung.jpg"
   },
   {
     id: 4,
     title: "Layanan 24 Jam",
     subtitle: "SIAGA SELALU",
     description: "Kami hadir kapan saja Anda membutuhkan. Tim profesional kami siap melayani pemesanan dan perjalanan Anda setiap saat.",
-    bgColor: "bg-[#475569]", // Cool Gray
+    bgColor: "bg-[#475569]",
     image: "/images/service-package.jpg"
   }
 ];
@@ -124,40 +125,42 @@ export default function StickyHeroSection() {
         {sections.map((sec, i) => (
           <div
             key={sec.id}
-            className={`sticky-card absolute w-full max-w-5xl h-[70vh] md:h-[80vh] rounded-[40px] md:rounded-[64px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row ${sec.bgColor} border border-white/5`}
+            className={`sticky-card absolute w-full max-w-5xl h-[80vh] md:h-[80vh] rounded-[40px] md:rounded-[64px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row ${sec.bgColor} border border-white/5`}
             style={{ 
               zIndex: i + 1,
             }}
           >
+            {/* Image Section - Background on mobile, Side-by-side on desktop */}
+            <div className="absolute inset-0 md:relative md:w-1/2 h-full overflow-hidden">
+              <Image
+                src={sec.image}
+                alt={sec.title}
+                fill
+                className="object-cover"
+                priority={i === 0}
+              />
+              <div className="absolute inset-0 bg-black/50 md:bg-gradient-to-l md:from-black/40 md:to-transparent" />
+            </div>
+
             {/* Content Section */}
-            <div className="w-full md:w-1/2 p-10 md:p-20 flex flex-col justify-center order-2 md:order-1">
+            <div className="relative z-10 w-full md:w-1/2 p-8 md:p-20 flex flex-col justify-center h-full">
               <div className="overflow-hidden mb-4">
                 <span className="text-amber-400 font-bold tracking-[0.3em] uppercase text-sm block">
                   {sec.subtitle}
                 </span>
               </div>
-              <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-8 leading-[1.1]">
+              <h2 className="text-3xl md:text-6xl lg:text-7xl font-black text-white mb-6 md:mb-8 leading-[1.1]">
                 {sec.title}
               </h2>
-              <p className="text-slate-300 text-lg md:text-xl max-w-md leading-relaxed mb-10 opacity-80">
+              <p className="text-slate-300 text-base md:text-xl max-w-md leading-relaxed mb-8 md:mb-10 opacity-90">
                 {sec.description}
               </p>
-              <button className="group w-fit flex items-center gap-4 px-10 py-5 bg-white text-slate-900 font-bold rounded-full hover:bg-amber-400 hover:text-blue-900 transition-all duration-300">
+              <button className="group w-fit flex items-center gap-4 px-8 py-4 md:px-10 md:py-5 bg-white text-slate-900 font-bold rounded-full hover:bg-amber-400 hover:text-blue-900 transition-all duration-300 text-sm md:text-base">
                 JELAJAHI
                 <svg className="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </button>
-            </div>
-
-            {/* Image Section */}
-            <div className="w-full md:w-1/2 h-full relative order-1 md:order-2 overflow-hidden">
-              <img
-                src={sec.image}
-                alt={sec.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-black/40 to-transparent" />
             </div>
           </div>
         ))}

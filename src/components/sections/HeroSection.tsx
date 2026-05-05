@@ -139,7 +139,7 @@ export default function HeroSection() {
             <div className="text-xs sm:text-sm text-blue-200">Unit Armada</div>
           </div>
           <div className="text-center">
-            <div className="text-xl sm:text-3xl font-bold text-amber-400">24/7</div>
+            <div className="text-xl sm:text-3xl font-bold text-amber-400">24 jam</div>
             <div className="text-xs sm:text-sm text-blue-200">Layanan Aktif</div>
           </div>
         </div>
