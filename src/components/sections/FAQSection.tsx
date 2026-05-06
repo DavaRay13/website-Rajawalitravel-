@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     question: "Apakah ada diskon untuk pemesanan grup?",
-    answer: "Ya! Kami menyediakan diskon khusus untuk pemesanan grup. Untuk 5-10 orang mendapat diskon 5%, 11-20 orang mendapat diskon 10%, dan untuk 21+ orang mendapat diskon 15%. Hubungi kami untuk info lebih lanjut.",
+    answer: "Hubungi kami untuk info lebih lanjut.",
   },
 ];
 
