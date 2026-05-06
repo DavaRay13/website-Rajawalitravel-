@@ -10,10 +10,10 @@ if (typeof window !== "undefined") {
 }
 
 const images = [
-  { id: 1, src: "/images/galeri-1.jpg", title: "Armada Hiace Luxury" },
-  { id: 2, src: "/images/galeri-2.jpg", title: "Interior Nyaman" },
+  { id: 1, src: "/images/hiace.jpg", title: "Armada Hiace Luxury" },
+  { id: 2, src: "/images/galeri-4.jpg", title: "Interior Nyaman" },
   { id: 3, src: "/images/galeri-3.jpg", title: "Layanan Eksekutif" },
-  { id: 4, src: "/images/galeri-4.jpg", title: "Tepat Waktu" },
+  { id: 4, src: "/images/galeri-2.jpg", title: "Tepat Waktu" },
   { id: 5, src: "/images/galeri-5.jpg", title: "Destinasi Wisata" },
   { id: 6, src: "/images/galeri-6.jpg", title: "Perjalanan Aman" },
   { id: 7, src: "/images/galeri-7.jpg", title: "Driver Profesional" },
