@@ -3,6 +3,7 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import WhatsAppFAB from "@/components/WhatsAppFAB";
+import LoadingScreen from "@/components/LoadingScreen";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -28,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body className={`${inter.variable} ${poppins.variable} font-sans`}>
+        <LoadingScreen />
         <Navbar />
         {children}
         <WhatsAppFAB />
