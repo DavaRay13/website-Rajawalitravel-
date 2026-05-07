@@ -62,7 +62,7 @@ const features = [
       </svg>
     ),
     title: "Armada Terjamin",
-    description: "Kendaraan terawat dengan service rutin. Setiap perjalanan include BPJS asuransi.",
+    description: "Kendaraan terawat dengan service rutin.",
   },
 ];
 

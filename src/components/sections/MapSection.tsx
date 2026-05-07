@@ -1,143 +1,120 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
-const faqs = [
-  {
-    question: "Bagaimana cara memesan travel Rajawali?",
-    answer: "Anda dapat memesan travel Rajawali dengan menghubungi kami via WhatsApp atau telepon. Kami akan memandu Anda untuk memilih rute, menentukan jadwal penjemputan, dan mengkonfirmasi pemesanan. Pemesanan dapat dilakukan minimal 1 hari sebelum keberangkatan.",
-  },
-  {
-    question: "Berapa lama waktu penjemputan sebelum keberangkatan?",
-    answer: "Sopir kami akan menjemput Anda 30-60 menit sebelum keberangkatan, tergantung pada lokasi dan lalu lintas. Kami akan menginformasikan waktu penjemputan yang lebih spesifik saat konfirmasi pemesanan.",
-  },
-  {
-    question: "Apakah bisa refund jika pembatalan?",
-    answer: "Ya, kami menyediakan kebijakan refund yang fleksibel. Pembatalan lebih dari 24 jam sebelum keberangkatan akan mendapatkan refund penuh. Pembatalan kurang dari 24 jam akan mendapatkan refund 50%. Pembatalan kurang dari 12 jam tidak dapat refund.",
-  },
-  {
-    question: "Apakah bisa mengubah jadwal keberangkatan?",
-    answer: "Tentu saja! Anda dapat mengubah jadwal keberangkatan maksimal 12 jam sebelum waktu yang seharusnya. Tidak dikenakan biaya tambahan selama masih dalam periode yang sama.",
-  },
-  {
-    question: "Apakah ada diskon untuk pemesanan grup?",
-    answer: "Ya! Kami menyediakan diskon khusus untuk pemesanan grup. Untuk 5-10 orang mendapat diskon 5%, 11-20 orang mendapat diskon 10%, dan untuk 21+ orang mendapat diskon 15%. Hubungi kami untuk info lebih lanjut.",
-  },
-];
-
-function FAQItem({
-  faq,
-  isOpen,
-  onToggle,
-}: {
-  faq: (typeof faqs)[0];
-  isOpen: boolean;
-  onToggle: () => void;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="border-b border-white/10"
-    >
-      <button
-        onClick={onToggle}
-        className="w-full py-6 flex items-center justify-between text-left hover:text-amber-400 transition-colors"
-      >
-        <span className="text-lg font-semibold text-white pr-8">{faq.question}</span>
-        <motion.span
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.3 }}
-          className="flex-shrink-0 text-amber-400"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </motion.span>
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
-          >
-            <div className="pb-6 text-blue-200 leading-relaxed">{faq.answer}</div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
-  );
-}
+import { motion } from "framer-motion";
 
 export default function MapSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
   return (
-    <section className="relative bg-blue-900 py-20 md:py-32">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Pertanyaan <span className="text-amber-400">Umum</span>
-          </h2>
-          <p className="text-blue-200 text-lg">
-            Temukan jawaban untuk pertanyaan yang sering diajukan.
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6"
-        >
-          {faqs.map((faq, index) => (
-            <FAQItem
-              key={index}
-              faq={faq}
-              isOpen={openIndex === index}
-              onToggle={() => setOpenIndex(openIndex === index ? null : index)}
-            />
-          ))}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="text-center mt-12"
-        >
-          <p className="text-blue-200 mb-4">
-            Tidak menemukan jawaban yang Anda cari?
-          </p>
-          <motion.a
-            href="https://wa.me/6285720853828"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-block px-6 py-3 bg-transparent border-2 border-amber-400 text-amber-400 font-semibold rounded-full hover:bg-amber-400 hover:text-blue-900 transition-all duration-300"
+    <section className="relative bg-white py-20 md:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Map Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl border-4 border-blue-50"
           >
-            Tanya Kami
-          </motion.a>
-        </motion.div>
+            <iframe
+              src="https://maps.google.com/maps?q=-7.0141836,106.9526377&hl=id&z=17&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Lokasi Rajawali"
+              className="filter grayscale-[0.2] contrast-[1.1]"
+            ></iframe>
+          </motion.div>
+
+          {/* Text Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+              Kunjungi <span className="text-amber-500">Kantor Kami</span>
+            </h2>
+            <div className="space-y-8">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 text-blue-600">
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-blue-900 mb-2">Alamat Utama</h3>
+                  <p className="text-blue-600 leading-relaxed text-lg">
+                    Kp. Jati Desa Mekarsari, Kec. Nyalindung,
+                    <br />
+                    Kabupaten Sukabumi, Jawa Barat
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 text-blue-600">
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-blue-900 mb-2">Jam Operasional</h3>
+                  <p className="text-blue-600 text-lg">
+                    Senin - Minggu: 24 Jam
+                    <br />
+                    <span className="text-sm italic font-medium">Siap melayani perjalanan Anda kapan saja.</span>
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-4">
+                <motion.a
+                  href="https://www.google.com/maps?q=-7.0141836,106.9526377&z=17&hl=id"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-blue-900 text-white font-bold rounded-full hover:bg-blue-800 transition-all duration-300 shadow-lg"
+                >
+                  Buka di Google Maps
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </motion.a>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

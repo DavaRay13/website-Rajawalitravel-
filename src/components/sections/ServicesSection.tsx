@@ -274,48 +274,58 @@ export default function ServicesSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-          {services.map((service, index) => (
-            <div
-              key={service.id}
-              className={`service-card relative h-[500px] bg-blue-900 rounded-3xl shadow-2xl border border-white/10 cursor-pointer overflow-hidden bill-change-transform ${
-                index === 0 ? "md:mt-0" : index === 1 ? "md:mt-16" : "md:mt-32"
-              }`}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            >
-              {/* Full Image Container */}
-              <div className="service-icon-wrapper absolute inset-0">
-                <img 
-                  src={service.image} 
-                  alt={service.title}
-                  className="service-icon w-full h-full object-cover opacity-80"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-blue-900/90" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
-                  <h3 className="card-title text-3xl font-bold text-white mt-auto text-center drop-shadow-lg transition-opacity duration-300">
+          {services.map((service, index) => {
+            const message = `Halo Rajawali Travel, saya tertarik dengan layanan ${service.title}. Bisa minta informasi lebih lanjut?`;
+            const waUrl = `https://wa.me/6285720853828?text=${encodeURIComponent(message)}`;
+
+            return (
+              <div
+                key={service.id}
+                className={`service-card relative h-[500px] bg-blue-900 rounded-3xl shadow-2xl border border-white/10 cursor-pointer overflow-hidden bill-change-transform ${
+                  index === 0 ? "md:mt-0" : index === 1 ? "md:mt-16" : "md:mt-32"
+                }`}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                {/* Full Image Container */}
+                <div className="service-icon-wrapper absolute inset-0">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="service-icon w-full h-full object-cover opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-blue-900/90" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
+                    <h3 className="card-title text-3xl font-bold text-white mt-auto text-center drop-shadow-lg transition-opacity duration-300">
+                      {service.title}
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Interactive Content Overlay (Revealed on Hover) */}
+                <div className="service-content-overlay absolute inset-0 bg-blue-900/60 backdrop-blur-sm flex flex-col justify-end p-10 translate-y-full opacity-0">
+                  <h3 className="text-2xl font-bold text-white mb-4">
                     {service.title}
                   </h3>
+                  <div className="w-12 h-1 bg-amber-400 mb-4" />
+                  <p className="text-blue-50 text-lg leading-relaxed mb-6">
+                    {service.description}
+                  </p>
+                  <a 
+                    href={waUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-amber-400 font-bold group w-fit"
+                  >
+                    <span>Pesan Sekarang</span>
+                    <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </a>
                 </div>
               </div>
-
-              {/* Interactive Content Overlay (Revealed on Hover) */}
-              <div className="service-content-overlay absolute inset-0 bg-blue-900/60 backdrop-blur-sm flex flex-col justify-end p-10 translate-y-full opacity-0">
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  {service.title}
-                </h3>
-                <div className="w-12 h-1 bg-amber-400 mb-4" />
-                <p className="text-blue-50 text-lg leading-relaxed mb-6">
-                  {service.description}
-                </p>
-                <div className="flex items-center text-amber-400 font-bold group">
-                  <span>Pesan Sekarang</span>
-                  <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

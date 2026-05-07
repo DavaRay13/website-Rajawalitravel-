@@ -157,13 +157,13 @@ export default function FleetPage() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M5 13l4 4L19 7"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
               </div>
-              <h3 className="text-white font-semibold mb-2">BPJS Terjamin</h3>
+              <h3 className="text-white font-semibold mb-2">Layanan 24/7</h3>
               <p className="text-blue-200 text-sm">
-                Setiap perjalanan sudah include asuransi
+                Siap melayani kebutuhan perjalanan Anda kapan saja
               </p>
             </div>
           </div>

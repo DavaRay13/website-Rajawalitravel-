@@ -7,6 +7,7 @@ import FullImageSection from "@/components/sections/FullImageSection";
 import HowToOrderSection from "@/components/sections/HowToOrderSection";
 import PhotoGallerySection from "@/components/sections/PhotoGallerySection";
 import CTASection from "@/components/sections/CTASection";
+import FAQSection from "@/components/sections/FAQSection";
 import MapSection from "@/components/sections/MapSection";
 import FooterSection from "@/components/sections/FooterSection";
 
@@ -40,6 +41,10 @@ export default function Home() {
       <CTASection />
       
       <SectionDivider type="triangle" />
+      
+      <FAQSection />
+
+      <SectionDivider type="waves-down" />
       
       <MapSection />
       

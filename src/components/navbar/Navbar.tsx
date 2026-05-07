@@ -37,12 +37,14 @@ function Logo() {
 
 function DesktopMenu({ activeItem }: { activeItem: string }) {
   return (
-    <nav className="hidden lg:flex items-center gap-8">
+    <nav className="flex items-center gap-4 sm:gap-6 lg:gap-8">
       {navItems.map((item) => (
         <Link
           key={item.label}
           href={item.href}
-          className="relative text-white font-medium text-sm uppercase tracking-wide py-2 group"
+          className={`${
+            item.label === "Home" ? "hidden lg:block" : "block"
+          } relative text-white font-bold text-[13px] sm:text-sm uppercase tracking-wider py-2 group`}
         >
           <span
             className={`transition-colors duration-300 ${
